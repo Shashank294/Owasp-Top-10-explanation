@@ -1,0 +1,118 @@
+Certainly! The OWASP Top 10 is a list maintained by the Open Web Application Security Project (OWASP) that highlights the most critical security risks to web applications. 
+It is regularly updated to reflect the current state of web security threats. Here’s a detailed explanation of each category in the OWASP Top 10, along with examples and types of attacks associated with them:
+
+1. Broken Access Control
+Description: This vulnerability occurs when an application does not properly enforce permissions and restrictions on user actions. Attackers can gain unauthorized access to data or functionality.
+Examples:
+•	Insecure Direct Object References (IDOR): An attacker manipulates URLs or parameters to access data they shouldn't, e.g., changing userID=123 to userID=124 to access another user's data.
+•	Vertical Privilege Escalation: A regular user accesses admin functionalities by guessing URLs or manipulating parameters.
+Attack Example: An attacker might change the userID in a URL to view or modify another user's profile if the application does not properly check permissions.
+Common Attack:
+Insecure Direct Object References (IDOR): Unauthorized access to resources by manipulating object references.
+Privilege Escalation: Gaining higher access rights than initially granted.
+Bypassing Authorization Checks: Exploiting flaws to gain unauthorized access.
+Insecure API Endpoints: Exposing sensitive actions through APIs without proper access controls.
+
+2. Cryptographic Failures
+Description: This involves improper implementation or usage of cryptographic algorithms, leading to sensitive data being exposed or compromised.
+Examples:
+•	Weak Encryption: Using outdated algorithms like MD5 or SHA1 for hashing passwords.
+•	Improper Key Management: Storing encryption keys in code or exposing them in configuration files.
+Attack Example: An attacker might exploit weak encryption to decrypt sensitive data or credentials that were not encrypted properly.
+Common Attack:
+Insecure Encryption: Using weak or outdated cryptographic algorithms.
+Exposed Key Management: Improper handling of cryptographic keys.
+Insufficient Randomness: Using predictable or insufficiently random values in cryptographic operations.
+Unencrypted Data: Failing to encrypt sensitive data at rest or in transit.
+
+3. Injection
+Description: Injection vulnerabilities occur when an attacker can send untrusted data into an application, leading to the execution of unintended commands or queries.
+Examples:
+•	SQL Injection: Attacker manipulates SQL queries by injecting malicious code, e.g., entering '; DROP TABLE users; -- into a login form.
+•	Command Injection: Attacker executes arbitrary commands on the server by injecting them into system calls.
+Attack Example: An attacker might exploit a login form that is vulnerable to SQL injection to bypass authentication and retrieve all user data from the database.
+Common Attack:
+SQL Injection: Injecting malicious SQL queries into input fields to manipulate the database.
+NoSQL Injection: Exploiting vulnerabilities in NoSQL databases through injection attacks.
+Command Injection: Executing arbitrary commands on the host operating system through injected input.
+XML Injection: Manipulating XML input to affect the application or its data.
+
+4. Insecure Design
+Description: This category focuses on flaws in the design of an application that can lead to security vulnerabilities. It emphasizes the need for secure design principles and practices.
+Examples:
+•	Failure to Implement Security Controls: Designing a system without considering security features like proper input validation or access control.
+•	Lack of Security Testing: Not including security considerations in the design phase leads to undetected vulnerabilities.
+Attack Example: A web application that is designed without considering secure coding practices might have flaws that allow for Cross-Site Scripting (XSS) or CSRF attacks.
+Common Attack:
+Insecure Authentication Mechanisms: Weak or flawed design of authentication systems.
+Flawed Access Control Mechanisms: Poorly designed access control that fails to enforce proper permissions.
+Lack of Secure Data Handling: Inadequate design around sensitive data processing and storage.
+
+5. Security Misconfiguration
+Description: This occurs when an application or server is not securely configured, leading to exposure of sensitive information or functionalities.
+Examples:
+•	Default Credentials: Leaving default usernames and passwords unchanged, e.g., admin/admin.
+•	Verbose Error Messages: Displaying detailed error messages that reveal system information.
+Attack Example: An attacker could exploit default credentials to gain unauthorized access to an application or exploit verbose error messages to learn more about the underlying system.
+Common Attack:
+Default Settings: Leaving default configurations which may be insecure.
+Unnecessary Services Enabled: Running unnecessary services or components that may be exploitable.
+Improper Permissions: Incorrect file or directory permissions leading to potential access issues.
+Verbose Error Messages: Exposing internal details through overly detailed error messages.
+
+6. Vulnerable and Outdated Components
+Description: This category covers risks associated with using outdated libraries, frameworks, or other components that have known vulnerabilities.
+Examples:
+•	Outdated Libraries: Using old versions of libraries with known vulnerabilities, e.g., an outdated version of Apache Struts with a remote code execution vulnerability.
+•	Unpatched Software: Failing to apply security patches and updates.
+Attack Example: An attacker might exploit a known vulnerability in an outdated library to execute arbitrary code on the server.
+Common Attack:
+Using Deprecated Libraries: Employing outdated or unsupported libraries and components.
+Unpatched Software: Failing to apply security patches or updates to software and dependencies.
+Known Vulnerabilities: Using components with known security vulnerabilities that are not addressed.
+
+7. Identification and Authentication Failures
+Description: These failures involve weaknesses in the mechanisms used to identify and authenticate users.
+ 
+Examples:
+•	Weak Password Policies: Allowing weak or easily guessable passwords.
+•	Session Fixation: Not properly invalidating session IDs after authentication.
+Attack Example: An attacker might exploit weak password policies to guess user passwords and gain unauthorized access to accounts.
+Common Attack:
+Weak Password Policies: Inadequate requirements for password strength and complexity.
+Session Fixation: Exploiting session identifiers to hijack user sessions.
+Brute Force Attacks: Attempting to guess passwords or authentication tokens through automated means.
+Credential Stuffing: Using stolen credentials from other breaches to gain unauthorized access.
+
+8. Software and Data Integrity Failures
+Description: This covers issues related to ensuring that software and data are not tampered with and are correctly verified.
+Examples:
+•	Unverified Software Updates: Allowing software updates to be applied without verifying their integrity.
+•	Lack of Data Integrity Checks: Not implementing proper checks to ensure data integrity.
+Attack Example: An attacker could tamper with a software update file, and if the update process does not verify the file's integrity, it could lead to malicious code being executed.
+Common Attack:
+Unverified Software Updates: Accepting and applying software updates without verification of their integrity.
+Tampered Data: Manipulating data to alter its integrity.
+Insecure Data Storage: Storing data insecurely, leading to potential tampering.
+
+9. Security Logging and Monitoring Failures
+Description: This category highlights the importance of logging and monitoring for detecting and responding to security incidents.
+Examples:
+•	Inadequate Logging: Failing to log critical security events or not logging any events at all.
+•	Lack of Monitoring: Not actively monitoring logs for signs of suspicious activity.
+Attack Example: An attacker could exploit the lack of logging to perform malicious actions without being detected, such as accessing sensitive data or exfiltrating information.
+Common Attack:
+Insufficient Logging: Not logging enough details to detect or understand security incidents.
+Lack of Monitoring: Failing to monitor logs effectively for suspicious activity.
+Inadequate Incident Response: Poor or nonexistent procedures for responding to security incidents.
+
+10. Server-Side Request Forgery (SSRF)
+Description: SSRF vulnerabilities occur when an attacker can trick a server into making requests to internal or unintended locations.
+Examples:
+•	Internal Network Scanning: An attacker sends a request from the server to an internal network resource, potentially revealing internal services or data.
+•	Accessing Metadata: Exploiting SSRF to access cloud provider metadata services for sensitive information.
+Attack Example: An attacker might exploit an SSRF vulnerability to access internal APIs or services that are otherwise protected from external access, such as accessing AWS metadata endpoints to retrieve credentials.
+Common Attacks:
+Internal Network Scanning: Using SSRF to scan internal networks from the server.
+Sensitive Data Exposure: Accessing internal resources or metadata services.
+External Service Manipulation: Exploiting SSRF to make unauthorized requests to external services.
